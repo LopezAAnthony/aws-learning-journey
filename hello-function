@@ -1,0 +1,10 @@
+import json
+from datetime import datetime, timezone
+
+def lambda_handler(event, context):
+    name = event.get('name', 'World')
+    now = datetime.now(timezone.utc).isoformat()
+    return {
+        'statusCode': 200,
+        'body': json.dumps(f'Hello {name}! This is my first Lambda. It is currently (UTC) {now}!')
+    }
